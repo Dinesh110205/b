@@ -13,7 +13,9 @@ connectDB();
 const app = express();
 
 // Middleware
+const cors = require('cors');
 app.use(cors({ origin: 'https://recipe-recommende.netlify.app' }));
+
 app.use(express.json());
 
 // Routes
