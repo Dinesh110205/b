@@ -7,12 +7,12 @@ const Recipe = require('./models/Recipe');
 const axios = require('axios');
 const socialRoutes = require('./routes/socialRoutes');
 
-
 dotenv.config();
 connectDB();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -25,14 +25,10 @@ app.use('/api/recipes', require('./routes/recipeRoutes'));
 app.use('/api/social', require('./routes/socialRoutes'));
 app.use('/api/inventory', require('./routes/inventoryRoutes'));
 app.use('/api/ai-features', require('./routes/aiFeaturesRoutes'));
-app.use('/api/social', socialRoutes);
 
-// Dashboard route
-
-app.use(express.json());
-
+// Chatbot route for Spoonacular API integration
 const SPOONACULAR_API_URL = 'https://api.spoonacular.com/recipes/findByIngredients';
-const SPOONACULAR_API_KEY = 'f7533b7b294344fcb9f459efba9984b1' 
+const SPOONACULAR_API_KEY = process.env.SPOONACULAR_API_KEY;
 
 app.post('/api/chatbot', async (req, res) => {
   const { mood, ingredients, health } = req.body;
@@ -82,6 +78,7 @@ app.post('/api/chatbot', async (req, res) => {
   }
 });
 
+// Dashboard route - Fetch user data and their recipes
 app.get('/api/dashboard/:userId', async (req, res) => {
   const userId = req.params.userId;
   
@@ -112,5 +109,6 @@ app.get('/api/dashboard/:userId', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT;
+// Starting the server
+const PORT = process.env.PORT || 5000; // Default to 5000 if no PORT in .env
 app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
