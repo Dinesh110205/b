@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { register, login } = require('../controllers/authController');
-const User = require('../models/User');
+const User = require('../models/User'); 
 
-// Route for registering a new user
 router.post('/register', register);
-
-// Route for logging in
 router.post('/login', login);
 
 // Route to search for a user by username
@@ -31,17 +28,19 @@ router.get('/user/:username', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-// Server-side route to get users by their IDs
+// server-side route
 router.post('/get-users-by-ids', async (req, res) => {
-  try {
-    const { ids } = req.body;
-    const users = await User.find({ _id: { $in: ids } }).select('_id username');
-    res.json(users);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+    try {
+      const { ids } = req.body;
+      const users = await User.find({ _id: { $in: ids } }).select('_id username');
+      res.json(users);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+  
 
 module.exports = router;
+
+
