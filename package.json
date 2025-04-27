@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js", 
   "scripts": {
-    "start": "node index.js",         // For production
-    "dev": "nodemon index.js"         // For development (auto-restarts the server)
+    "start": "node index.js",         
+    "dev": "nodemon index.js"         
   },
   "keywords": [],
   "author": "",
