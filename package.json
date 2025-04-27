@@ -13,7 +13,7 @@
     "mongoose": "^5.10.9",
     "cors": "^2.8.5",
     "axios": "^0.21.1",
-    "nodemon": "^2.0.7"  // If you're using nodemon for development
+    "nodemon": "^2.0.7"  
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
