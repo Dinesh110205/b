@@ -1,21 +1,26 @@
 {
-  "name": "your-app-name",
+  "name": "food-recommendation-app",
   "version": "1.0.0",
-  "description": "Your app description",
-  "main": "index.js",
+  "main": "index.js", 
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js",         // For production
+    "dev": "nodemon index.js"         // For development (auto-restarts the server)
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "express": "^4.17.1",
-    "dotenv": "^8.2.0",
-    "mongoose": "^5.10.9",
+    "async-retry": "^1.3.3",
+    "axios": "^1.9.0",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
-    "axios": "^0.21.1",
-    "nodemon": "^2.0.7"  // If you're using nodemon for development
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^3.1.10"
   }
 }
